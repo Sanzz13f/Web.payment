@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAYMENT SANZZ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SanzzOfficial - Top Up Free Fire</title>
   <style>
     body {
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: white;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color: white;
+    }
+    header {
+      background-color: #ff4444;
+      padding: 20px;
       text-align: center;
     }
-
-    header {
-      padding: 40px 20px;
-    }
-
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      margin: 0;
     }
-
     .container {
-      max-width: 800px;
-      margin: 0 auto;
       padding: 20px;
-    }
-
-    .card {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      margin: 20px 0;
-      padding: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    .label {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-      color: #ffffffb3;
-    }
-
-    .value {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .qris-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #222;
+      border-radius: 10px;
       margin-top: 20px;
     }
-
-    footer {
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #ffffffaa;
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #ff4444;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .qris {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>PAYMENT SANZZ</h1>
-    <p>Silakan pilih metode pembayaran Anda di bawah ini:</p>
+    <h1>SanzzOfficial</h1>
+    <p>Top Up Diamond Free Fire Murah & Cepat</p>
   </header>
 
   <div class="container">
-    <div class="card">
-      <div class="label">Nomor DANA</div>
-      <div class="value">083878811074</div>
-    </div>
+    <h2>Form Top Up</h2>
+    <form id="topupForm">
+      <label for="playerId">ID Pemain Free Fire</label>
+      <input type="text" id="playerId" required />
 
-    <div class="card">
-      <div class="label">Nomor GoPay</div>
-      <div class="value">Belum tersedia</div>
-    </div>
+      <label for="jumlah">Pilih Jumlah Diamond</label>
+      <select id="jumlah" required>
+        <option value="">-- Pilih --</option>
+        <option value="70">70 Diamond - Rp10.000</option>
+        <option value="140">140 Diamond - Rp18.000</option>
+        <option value="355">355 Diamond - Rp45.000</option>
+        <option value="720">720 Diamond - Rp90.000</option>
+      </select>
 
-    <div class="card">
-      <div class="label">Nomor OVO</div>
-      <div class="value">Belum tersedia</div>
-    </div>
+      <label for="payment">Metode Pembayaran</label>
+      <select id="payment" required>
+        <option value="">-- Pilih --</option>
+        <option value="Dana">Dana (083878811074)</option>
+      </select>
 
-    <div class="card">
-      <div class="label">QRIS</div>
-      <!-- Ganti URL di bawah ini dengan link foto QRIS Anda -->
-      <img src="LINK_GAMBAR_QRIS_ANDA" alt="QRIS Payment" class="qris-img">
+      <button type="submit">Lanjutkan Pembayaran</button>
+    </form>
+
+    <div class="qris" id="qrisBox" style="display: none;">
+      <h3>Scan QRIS Dana</h3>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dana:083878811074" alt="QRIS Dana" />
+      <p>Kirim bukti pembayaran ke <a href="#" id="waLink" target="_blank" style="color: #1cd760;">WhatsApp Admin</a></p>
     </div>
   </div>
 
-  <footer>
-    &copy; 2025 PAYMENT SANZZ. All rights reserved.
-  </footer>
+  <div class="footer">
+    &copy; 2025 SanzzOfficial. All rights reserved.
+  </div>
+
+  <script>
+    const form = document.getElementById('topupForm');
+    const qrisBox = document.getElementById('qrisBox');
+    const waLink = document.getElementById('waLink');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('playerId').value;
+      const jumlah = document.getElementById('jumlah').value;
+      const metode = document.getElementById('payment').value;
+
+      const pesan = `Halo Admin, saya ingin top up Free Fire\n\nID Pemain: ${id}\nJumlah Diamond: ${jumlah}\nMetode: ${metode}`;
+      const link = `https://wa.me/6283878811074?text=${encodeURIComponent(pesan)}`;
+      waLink.href = link;
+      qrisBox.style.display = 'block';
+    });
+  </script>
 
 </body>
 </html>

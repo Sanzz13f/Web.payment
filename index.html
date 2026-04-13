@@ -1,215 +1,122 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>WELCOME TO WEB OM SANZZ — Jual APK & Top Up EPEP</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg1:#0f0c29; --bg2:#302b63; --accent:#ff7eb3; --accent2:#7afcff; --glass: rgba(255,255,255,0.06);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Arial;background:url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat fixed;color:#eef2ff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SanzzStore</title><style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  color:white;
+  text-align:center;
+  background:black;
+  overflow:hidden;
+}
 
-  .wrap{width:100%;max-width:1100px;border-radius:18px;padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);box-shadow:0 20px 50px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04);position:relative;overflow:hidden}
+/* animated space background */
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
 
-  /* animated shapes */
-  .wrap::before, .wrap::after{content:'';position:absolute;border-radius:50%;filter:blur(60px);opacity:0.55}
-  .wrap::before{width:520px;height:520px;background:linear-gradient(45deg,var(--accent),#ffd28a);right:-120px;top:-120px}
-  .wrap::after{width:420px;height:420px;background:linear-gradient(45deg,var(--accent2),#6a5cff);left:-140px;bottom:-120px}
+.container {
+  padding:20px;
+}
 
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-  .brand{display:flex;align-items:center;gap:14px}
-  .logo{width:66px;height:66px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffd28a);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:20px}
-  h1{margin:0;font-size:22px;letter-spacing:1px}
-  .tag{color:rgba(238,242,255,0.82);font-weight:600}
-  .subtitle{color:rgba(238,242,255,0.7);font-size:14px}
+img.profile {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:3px solid #00ccff;
+}
 
-  .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
-  @media (max-width:980px){.grid{grid-template-columns:1fr}}
+h1 {
+  color:#00ccff;
+}
 
-  .hero{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.025)}
-  .hero h2{margin:0 0 8px 0;font-size:28px}
-  .hero p{margin:0 0 12px 0;color:rgba(238,242,255,0.82);font-size:15px}
-  .cta{display:flex;gap:12px;margin-top:12px}
-  .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;cursor:pointer;font-weight:700}
-  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#081020;border:none}
+button {
+  display:block;
+  width:90%;
+  margin:10px auto;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#00ccff;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-  .products{display:flex;flex-direction:column;gap:12px;margin-top:14px}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:12px}
-  .card .thumb{width:72px;height:72px;border-radius:10px;background:linear-gradient(135deg,#fff2 10%,#fff0);display:flex;align-items:center;justify-content:center;font-weight:800;color:#06202a}
-  .card h4{margin:0;font-size:16px}
-  .card p{margin:4px 0 0 0;color:rgba(238,242,255,0.7);font-size:13px}
-  .price{margin-left:auto;font-weight:800;color:var(--accent2)}
+.stock-box {
+  border:1px solid #00ccff;
+  padding:15px;
+  margin-top:20px;
+  border-radius:10px;
+}
+</style></head><body onclick="playMusic()"><canvas id="space"></canvas>
 
-  aside.sideCard{padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
-  .sideCard h3{margin:0 0 8px 0}
-  .field{margin-bottom:10px}
-  input[type=email], input[type=text]{width:100%;padding:10px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:inherit}
-  .buyRow{display:flex;gap:8px;margin-top:10px}
+<div class="container"><img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg"><h1>SanzzStore</h1>
+<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button>
 
-  footer{margin-top:16px;color:rgba(238,242,255,0.6);font-size:13px;text-align:center}
+<button onclick="showStock()">MENU STORE</button> <button onclick="orderWA()">ORDER ADMIN</button>
 
-  .note{margin-top:12px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.03);color:#ffdcdc}
+<div id="stock" class="stock-box" style="display:none">
+<pre>
+📦 STOCK TERSEDIA• AMPREM Jumlah : 3 akun Harga : Rp5.000
 
-  /* little sparkle animation */
-  .spark{position:absolute;width:8px;height:8px;background:rgba(255,255,255,0.85);border-radius:50%;box-shadow:0 0 20px rgba(255,255,255,0.9);opacity:0.9;animation:float 6s linear infinite}
-  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-60px)}100%{transform:translateY(0)}}
+• VIUPREM Jumlah : 1 akun Harga : Rp7.000
 
-</style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">OM</div>
-        <div>
-          <h1>WELCOME TO WEB OM SANZZ</h1>
-          <div class="subtitle">SIAP MELAYANI KEBUTUHAN ANDA — APK PREMIUM & TOP UP EPEP</div>
-        </div>
-      </div>
-      <div class="tag">Fast • Aman • Terpercaya</div>
-    </header>
+Cara beli: buy <produk> [jumlah] </pre>
 
-    <div class="grid">
-      <main class="hero">
-        <h2>DISINI KAMI MENYEDIAKAN APK PREMIUM DAN TOP UP EPEP</h2>
-        <p>SILAHKAN PILIH YANG ANDA BUTUHKAN — Kami menyediakan layanan cepat dan aman. Pastikan Anda memiliki hak distribusi untuk setiap APK yang dibeli.</p>
-
-        <div class="products">
-          <div class="card">
-            <div class="thumb">W</div>
-            <div>
-              <h4>WINK PREM</h4>
-              <p>Versi Premium — Fitur lengkap, update rutin</p>
-            </div>
-            <div class="price">Rp 49.000</div>
-            <button class="btn" data-product="wink">Pilih</button>
-          </div>
-
-          <div class="card">
-            <div class="thumb">AM</div>
-            <div>
-              <h4>AM PREM</h4>
-              <p>Unlock semua fitur premium tanpa iklan</p>
-            </div>
-            <div class="price">Rp 59.000</div>
-            <button class="btn" data-product="am">Pilih</button>
-          </div>
-
-          <div class="card">
-            <div class="thumb">C</div>
-            <div>
-              <h4>CAPCUT PREM</h4>
-              <p>Template & fitur premium untuk edit video</p>
-            </div>
-            <div class="price">Rp 39.000</div>
-            <button class="btn" data-product="capcut">Pilih</button>
-          </div>
-
-          <div class="card">
-            <div class="thumb">E</div>
-            <div>
-              <h4>TOP UP EPEP</h4>
-              <p>Paket diamond & voucher cepat</p>
-            </div>
-            <div class="price">Mulai Rp 5.000</div>
-            <button class="btn" data-product="epep">Top Up</button>
-          </div>
-        </div>
-
-        <div class="note">
-          <strong>Perhatian:</strong> Saya <em>tidak dapat membantu</em> membuat, menjual, atau mendistribusikan APK bajakan. Template ini diasumsikan untuk penggunaan legal — Anda harus memiliki izin/otorisasi untuk setiap APK yang Anda distribusikan. Jika Anda tidak memiliki izin, saya sarankan fokus ke layanan Top Up EPEP atau menjual lisensi resmi.
-        </div>
-
-      </main>
-
-      <aside class="sideCard">
-        <h3>Pesan Sekarang</h3>
-        <div class="field"><label>Email</label><input id="email" type="email" placeholder="email@contoh.com" /></div>
-        <div class="field"><label>Produk Pilihan</label><input id="productField" type="text" placeholder="Pilih produk..." readonly /></div>
-        <div class="buyRow">
-          <button class="btn primary" id="checkout">Checkout</button>
-          <button class="btn" id="chat">Chat WA</button>
-        </div>
-
-        <h4 style="margin-top:14px">Kenapa pilih kami?</h4>
-        <ul style="color:rgba(238,242,255,0.78);font-size:14px">
-          <li>Proses cepat & pengiriman token/unduhan otomatis</li>
-          <li>Dukungan 24/7 via WhatsApp</li>
-          <li>Metode pembayaran lokal (Midtrans/Xendit) & internasional</li>
-        </ul>
-
-        <div style="margin-top:12px;font-size:13px;color:rgba(238,242,255,0.75)">Hubungi kami: <strong>om.sanzz@example.com</strong></div>
-      </aside>
-
-      <section class="sideCard" style="margin-top:20px">
-        <h3>Metode Pembayaran</h3>
-        <p style="color:rgba(238,242,255,0.8);margin-bottom:8px">SILAHKAN PENCET TOMBOL PEMBAYARAN</p>
-        <div class="field">
-          <label>No DANA</label>
-          <input type="text" value="+62 819-3285-8106" readonly />
-        </div>
-        <button class="btn primary" onclick="window.location.href='https://wa.me/6281932858106?text=Halo%20Admin,%20saya%20ingin%20melakukan%20pembayaran.'">Chat Admin ☺️</button>
-        <button class="btn primary" style="margin-top:10px;width:100%" onclick="navigator.clipboard.writeText('+6281932858106');alert('Nomor DANA disalin!');">BAYAR VIA DANA (+62 819-3285-8106)</button>/6281932858106?text=Halo%20Admin,%20saya%20ingin%20melakukan%20pembayaran.'">Chat Admin ☺️</button>
-      </section>
-    </div>
-
-    <footer>
-      © OM SANZZ — Semua transaksi tunduk pada syarat & ketentuan. Pastikan Anda memiliki hak distribusi.
-    </footer>
-
-    <!-- decorative sparkles -->
-    <div class="spark" style="left:30px;top:40px;animation-duration:7s"></div>
-    <div class="spark" style="left:120px;top:160px;animation-duration:5.5s"></div>
-    <div class="spark" style="right:80px;top:60px;animation-duration:8s"></div>
-  </div>
+</div></div><audio id="music" src="threesixty proyek.mp3"></audio>
 
 <script>
-  // simple interactivity (front-end only)
-  document.querySelectorAll('.card .btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const product = btn.dataset.product || 'unknown';
-      document.getElementById('productField').value = btn.parentElement.querySelector('h4').innerText;
-      // subtle pulse
-      btn.animate([{transform:'scale(1)'},{transform:'scale(0.96)'},{transform:'scale(1)'}],{duration:180});
-    });
+function openLink(link){
+  window.open(link, '_blank');
+}
+
+function showStock(){
+  document.getElementById('stock').style.display='block';
+}
+
+function orderWA(){
+  window.open('https://wa.me/6283878811074', '_blank');
+}
+
+function playMusic(){
+  document.getElementById('music').play();
+}
+
+/* space animation */
+const canvas = document.getElementById('space');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+for(let i=0;i<200;i++){
+  stars.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    size:Math.random()*2
+  });
+}
+
+function animate(){
+  ctx.fillStyle='black';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle='#00ccff';
+  stars.forEach(star=>{
+    ctx.fillRect(star.x, star.y, star.size, star.size);
+    star.y += 0.5;
+    if(star.y > canvas.height) star.y = 0;
   });
 
-  document.getElementById('checkout').addEventListener('click', ()=>{
-    const email = document.getElementById('email').value.trim();
-    const product = document.getElementById('productField').value.trim();
-    if(!email || !product){ alert('Masukkan email dan pilih produk terlebih dahulu.'); return; }
-    alert('Terima kasih! Pesanan Anda untuk "'+product+'" telah diterima. (Demo — implementasi pembayaran server-side diperlukan)');
-    // NOTE: implementasi server-side + gateway pembayaran + validasi distribusi harus ditambahkan
-  });
+  requestAnimationFrame(animate);
+}
 
-  document.getElementById('chat').addEventListener('click', ()=>{
-    // contoh link WA (nomor placeholder)
-    window.location.href = 'https://wa.me/6281234567890?text=Halo%20OM%20SANZZ,%20saya%20mau%20tanya%20produk.';
-  });
-</script>
-  <!-- meteor animation -->
-  <div class="meteor"></div>
-  <style>
-    .meteor{
-      position:fixed;
-      top:-100px;
-      left:50%;
-      width:3px;
-      height:60px;
-      background:linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0));
-      transform:rotate(45deg);
-      animation:meteorMove 3s linear infinite;
-      opacity:0.8;
-    }
-    @keyframes meteorMove{
-      0%{transform:translate(0,0) rotate(45deg);opacity:0}
-      10%{opacity:1}
-      100%{transform:translate(-600px,600px) rotate(45deg);opacity:0}
-    }
-  </style>
-</body>
+animate();
+</script></body>
 </html>
-

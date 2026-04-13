@@ -12,7 +12,6 @@ body {
   overflow:hidden;
 }
 
-/* animated space background */
 canvas {
   position:fixed;
   top:0;
@@ -31,9 +30,7 @@ img.profile {
   border:3px solid #00ccff;
 }
 
-h1 {
-  color:#00ccff;
-}
+h1 { color:#00ccff; }
 
 button {
   display:block;
@@ -53,31 +50,38 @@ button {
   padding:15px;
   margin-top:20px;
   border-radius:10px;
+  display:none;
 }
 </style></head><body onclick="playMusic()"><canvas id="space"></canvas>
 
 <div class="container"><img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg"><h1>SanzzStore</h1>
-<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button>
+<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button> <button onclick="openLink('https://tiktok.com/@sanz_vt_bola')">TIKTOK</button>
 
-<button onclick="showStock()">MENU STORE</button> <button onclick="orderWA()">ORDER ADMIN</button>
+<button onclick="toggleStock()">📦 MENU STORE</button> <button onclick="orderWA()">🛒 ORDER ADMIN</button>
 
-<div id="stock" class="stock-box" style="display:none">
+<div id="stock" class="stock-box">
 <pre>
-📦 STOCK TERSEDIA• AMPREM Jumlah : 3 akun Harga : Rp5.000
-
-• VIUPREM Jumlah : 1 akun Harga : Rp7.000
-
-Cara beli: buy <produk> [jumlah] </pre>
-
-</div></div><audio id="music" src="threesixty proyek.mp3"></audio>
+╭──────────────────────────────╮
+│ 📦 Stock Tersedia           │
+├──────────────────────────────┤
+│ • AMPREM
+│   📈 Jumlah : 3 akun 💰 Harga Rp5.000
+│
+│ • VIUPREM
+│   📈 Jumlah : 1 akun 💰 Harga Rp7.000
+├──────────────────────────────┤
+│ 🛒 Cara beli:
+│ buy <produk> [jumlah]
+╰──────────────────────────────╯
+</pre>
+</div></div><audio id="music" src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3"></audio>
 
 <script>
-function openLink(link){
-  window.open(link, '_blank');
-}
+function openLink(link){ window.open(link, '_blank'); }
 
-function showStock(){
-  document.getElementById('stock').style.display='block';
+function toggleStock(){
+  let s = document.getElementById('stock');
+  s.style.display = (s.style.display === 'none') ? 'block' : 'none';
 }
 
 function orderWA(){
@@ -85,17 +89,20 @@ function orderWA(){
 }
 
 function playMusic(){
-  document.getElementById('music').play();
+  let audio = document.getElementById('music');
+  audio.volume = 0.5;
+  audio.loop = true;
+  audio.play().catch(()=>{});
 }
 
-/* space animation */
+/* SPACE ANIMATION */
 const canvas = document.getElementById('space');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-for(let i=0;i<200;i++){
+for(let i=0;i<250;i++){
   stars.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
@@ -110,7 +117,7 @@ function animate(){
   ctx.fillStyle='#00ccff';
   stars.forEach(star=>{
     ctx.fillRect(star.x, star.y, star.size, star.size);
-    star.y += 0.5;
+    star.y += 0.7;
     if(star.y > canvas.height) star.y = 0;
   });
 

@@ -19,9 +19,7 @@ canvas {
   z-index:-1;
 }
 
-.container {
-  padding:20px;
-}
+.container { padding:20px; }
 
 img.profile {
   width:120px;
@@ -45,6 +43,12 @@ button {
   cursor:pointer;
 }
 
+.music-btn {
+  background:#111;
+  color:#00ccff;
+  border:1px solid #00ccff;
+}
+
 .stock-box {
   border:1px solid #00ccff;
   padding:15px;
@@ -52,10 +56,12 @@ button {
   border-radius:10px;
   display:none;
 }
-</style></head><body onclick="playMusic()"><canvas id="space"></canvas>
+</style></head><body><canvas id="space"></canvas>
 
 <div class="container"><img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg"><h1>SanzzStore</h1>
-<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button> <button onclick="openLink('https://tiktok.com/@sanz_vt_bola')">TIKTOK</button>
+<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button class="music-btn" onclick="toggleMusic()">🔊 PLAY / PAUSE MUSIK</button>
+
+<button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button> <button onclick="openLink('https://tiktok.com/@sanz_vt_bola')">TIKTOK</button>
 
 <button onclick="toggleStock()">📦 MENU STORE</button> <button onclick="orderWA()">🛒 ORDER ADMIN</button>
 
@@ -74,9 +80,9 @@ button {
 │ buy <produk> [jumlah]
 ╰──────────────────────────────╯
 </pre>
-</div></div><audio id="music" src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3"></audio>
-
-<script>
+</div></div><audio id="music" loop>
+  <source src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3" type="audio/mp3">
+</audio><script>
 function openLink(link){ window.open(link, '_blank'); }
 
 function toggleStock(){
@@ -88,11 +94,17 @@ function orderWA(){
   window.open('https://wa.me/6283878811074', '_blank');
 }
 
-function playMusic(){
+let isPlaying = false;
+function toggleMusic(){
   let audio = document.getElementById('music');
-  audio.volume = 0.5;
-  audio.loop = true;
-  audio.play().catch(()=>{});
+  if(!isPlaying){
+    audio.volume = 0.5;
+    audio.play();
+    isPlaying = true;
+  } else {
+    audio.pause();
+    isPlaying = false;
+  }
 }
 
 /* SPACE ANIMATION */

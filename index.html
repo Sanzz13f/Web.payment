@@ -1,141 +1,177 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SanzzStore</title><style>
+<title>Sanzzstore</title>
+
+<style>
 body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  color:white;
-  text-align:center;
-  background:black;
-  overflow:hidden;
+  margin: 0;
+  font-family: Arial;
+  color: white;
+  background: black;
+  overflow-x: hidden;
 }
 
+/* STAR BG */
 canvas {
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-.container { padding:20px; }
-
-img.profile {
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  border:3px solid #00ccff;
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 20px;
 }
 
-h1 { color:#00ccff; }
-
-button {
-  display:block;
-  width:90%;
-  margin:10px auto;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  background:#00ccff;
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
+.profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #00b7ff;
+  box-shadow: 0 0 25px #00b7ff;
 }
 
+/* RUNNING TEXT */
+.running-text {
+  white-space: nowrap;
+  display: inline-block;
+  animation: jalan 6s linear infinite;
+  color: #00b7ff;
+  text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff;
+  font-size: 24px;
+}
+
+@keyframes jalan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* BUTTON */
+.btn {
+  display: block;
+  width: 85%;
+  margin: 12px auto;
+  padding: 13px;
+  background: rgba(0,183,255,0.15);
+  border: 1px solid #00b7ff;
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #00b7ff;
+  color: black;
+}
+
+/* MUSIC */
 .music-btn {
-  background:#111;
-  color:#00ccff;
-  border:1px solid #00ccff;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #00b7ff;
+  color: black;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: bold;
 }
+</style>
+</head>
 
-.stock-box {
-  border:1px solid #00ccff;
-  padding:15px;
-  margin-top:20px;
-  border-radius:10px;
-  display:none;
-}
-</style></head><body><canvas id="space"></canvas>
+<body>
 
-<div class="container"><img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg"><h1>SanzzStore</h1>
-<p>GRUP JB SALURAN DAN SOSMED REAL SANZZSTORE</p><button class="music-btn" onclick="toggleMusic()">🔊 PLAY / PAUSE MUSIK</button>
+<canvas id="stars"></canvas>
 
-<button onclick="openLink('https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t')">GB 1</button> <button onclick="openLink('https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t')">GB 2</button> <button onclick="openLink('https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t')">GB PRESET</button> <button onclick="openLink('https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26')">SALURAN</button> <button onclick="openLink('https://tiktok.com/@sanz_vt_bola')">TIKTOK</button>
+<!-- MUSIC -->
+<audio id="bgm" preload="auto" loop>
+  <source src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3">
+</audio>
 
-<button onclick="toggleStock()">📦 MENU STORE</button> <button onclick="orderWA()">🛒 ORDER ADMIN</button>
+<button class="music-btn" onclick="toggleMusic()">🎧 Play</button>
 
-<div id="stock" class="stock-box">
-<pre>
-╭──────────────────────────────╮
-│ 📦 Stock Tersedia           │
-├──────────────────────────────┤
-│ • AMPREM
-│   📈 Jumlah : 3 akun 💰 Harga Rp5.000
-│
-│ • VIUPREM
-│   📈 Jumlah : 1 akun 💰 Harga Rp7.000
-├──────────────────────────────┤
-│ 🛒 Cara beli:
-│ buy <produk> [jumlah]
-╰──────────────────────────────╯
-</pre>
-</div></div><audio id="music" loop>
-  <source src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3" type="audio/mp3">
-</audio><script>
-function openLink(link){ window.open(link, '_blank'); }
+<!-- HEADER -->
+<div class="header">
+  <img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg">
+  
+  <div style="overflow:hidden; width:100%;">
+    <h1 class="running-text">SANZZSTORE 🚀✨ SANZZSTORE 🚀✨ SANZZSTORE 🚀✨</h1>
+  </div>
 
-function toggleStock(){
-  let s = document.getElementById('stock');
-  s.style.display = (s.style.display === 'none') ? 'block' : 'none';
-}
+  <p>GRUP JB • SALURAN • SOSMED REAL</p>
+</div>
 
-function orderWA(){
-  window.open('https://wa.me/6283878811074', '_blank');
-}
+<!-- BUTTONS -->
+<a class="btn" href="https://chat.whatsapp.com/GjMmzSnudVn4hqtTIxxiMM?mode=gi_t">🔥 GB SANZZSTORE 1</a>
+<a class="btn" href="https://chat.whatsapp.com/E45CsOZG7UqEWRDZG5Mp6s?mode=gi_t">🔥 GB SANZZSTORE 2</a>
+<a class="btn" href="https://chat.whatsapp.com/EubaWFtxAoiBrG8NrP2vqB?mode=gi_t">🎨 GB PRESET</a>
 
-let isPlaying = false;
-function toggleMusic(){
-  let audio = document.getElementById('music');
-  if(!isPlaying){
-    audio.volume = 0.5;
-    audio.play();
-    isPlaying = true;
-  } else {
-    audio.pause();
-    isPlaying = false;
+<a class="btn" href="https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26">📢 SALURAN WHATSAPP</a>
+<a class="btn" href="https://tiktok.com/@sanz_vt_bola">🎥 TIKTOK SANZZSTORE</a>
+
+<!-- SCRIPT -->
+<script>
+// MUSIC FIX
+const audio = document.getElementById("bgm");
+let play = false;
+
+async function toggleMusic() {
+  try {
+    if (!play) {
+      await audio.play();
+      play = true;
+      document.querySelector(".music-btn").innerText = "⏸ Pause";
+    } else {
+      audio.pause();
+      play = false;
+      document.querySelector(".music-btn").innerText = "🎧 Play";
+    }
+  } catch {
+    alert("Klik lagi buat nyalain musik 🎧");
   }
 }
 
-/* SPACE ANIMATION */
-const canvas = document.getElementById('space');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// STAR BG
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 
-let stars = [];
-for(let i=0;i<250;i++){
-  stars.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    size:Math.random()*2
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let stars = Array(120).fill().map(()=>({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*2
+}));
+
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
+
+  stars.forEach(s=>{
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
+
+    s.y+=0.5;
+    if(s.y>canvas.height) s.y=0;
   });
+
+  requestAnimationFrame(anim);
 }
+anim();
+</script>
 
-function animate(){
-  ctx.fillStyle='black';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle='#00ccff';
-  stars.forEach(star=>{
-    ctx.fillRect(star.x, star.y, star.size, star.size);
-    star.y += 0.7;
-    if(star.y > canvas.height) star.y = 0;
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-</script></body>
+</body>
 </html>

@@ -36,24 +36,16 @@ canvas {
   box-shadow: 0 0 25px #00b7ff;
 }
 
-/* RUNNING TEXT */
-.running-text {
-  white-space: nowrap;
-  display: inline-block;
-  animation: jalan 6s linear infinite;
+/* TYPING TEXT */
+.typing {
+  font-size: 24px;
   color: #00b7ff;
   text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff;
-  font-size: 24px;
-}
-
-@keyframes jalan {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-p {
-  font-size: 13px;
-  opacity: 0.8;
+  border-right: 2px solid #00b7ff;
+  width: fit-content;
+  margin: 10px auto;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* BUTTON */
@@ -83,7 +75,7 @@ p {
   background: #00b7ff;
   color: black;
   border: none;
-  padding: 10px 12px;
+  padding: 10px;
   border-radius: 10px;
   font-weight: bold;
 }
@@ -96,7 +88,7 @@ p {
 
 <!-- MUSIC -->
 <audio id="bgm" preload="auto" loop>
-  <source src="https://legal-white-wladhta4l7.edgeone.app/threesixty%20proyek.mp3">
+  <source src="https://selfish-blush-ngcoezcmpy.edgeone.app/threesixty%20proyek.mp3">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎧 Play</button>
@@ -105,9 +97,7 @@ p {
 <div class="header">
   <img class="profile" src="https://cdn.phototourl.com/free/2026-04-13-f201e380-4f80-4b78-9551-6b5d20ee5266.jpg">
   
-  <div style="overflow:hidden; width:100%;">
-    <h1 class="running-text">SANZZSTORE 🚀✨ SANZZSTORE 🚀✨ SANZZSTORE 🚀✨</h1>
-  </div>
+  <h1 class="typing" id="typingText"></h1>
 
   <p>GRUP JB • SALURAN • SOSMED REAL</p>
 </div>
@@ -120,9 +110,11 @@ p {
 <a class="btn" href="https://whatsapp.com/channel/0029Vb79TFU1XquVzcb26j26">📢 SALURAN WHATSAPP</a>
 <a class="btn" href="https://tiktok.com/@sanz_vt_bola">🎥 TIKTOK SANZZSTORE</a>
 
-<!-- SCRIPT -->
+<!-- QR BUTTON -->
+<a class="btn" href="https://cdn.phototourl.com/free/2026-04-14-e806dd53-86cf-45cb-96e3-d3e73c31e4da.jpg">💳 SCAN QR PEMBAYARAN</a>
+
 <script>
-// MUSIC FIX
+// ===== MUSIC =====
 const audio = document.getElementById("bgm");
 let play = false;
 
@@ -142,7 +134,21 @@ async function toggleMusic() {
   }
 }
 
-// STAR BG
+// ===== TYPING EFFECT =====
+const text = "Sanzzstore💫🪽";
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 100);
+  }
+}
+
+typing();
+
+// ===== STAR BG =====
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
